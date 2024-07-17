@@ -135,9 +135,8 @@ window.addEventListener("load", generateNewDeck);
 resetButton.addEventListener("click", generateNewDeck);
 
 docMain.addEventListener("click", drawFromDeck);
-docMain.addEventListener("touchend", drawFromDeck);
 
-addExclusionButton.onclick = () => {
+addExclusionButton.addEventListener("click", () => {
     if(addToExclusions(addExclusionText.value)) {
         addExclusionButton.style = "background-color: rgb(50, 200, 50)";
         generateNewDeck();
@@ -145,4 +144,4 @@ addExclusionButton.onclick = () => {
     } else addExclusionButton.style = "background-color: rgb(200, 50, 50)";
     
     setTimeout(() => addExclusionButton.style = "", 500);
-}
+});
