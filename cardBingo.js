@@ -131,7 +131,35 @@ function drawFromDeck() {
     cardsLeftDisplay.innerHTML = deckOfCards.length;
 }
 
-window.addEventListener("load", generateNewDeck);
+function loadExclusions() {
+    const fetchedExclusions = localStorage.getItem("cardExclusions")??0;
+    if(fetchedExclusions === 0) return;
+
+    for(const fetched of fetchedExclusions.split("_")) {
+        addToExclusions(fetched);
+    }
+}
+
+function saveExclusions() {
+    let toSave = "";
+    for(let i = 0; i < EXCLUSIONS.length; i++) {
+        toSave += EXCLUSIONS[i] + (i < EXCLUSIONS.length - 1? "_":"");
+    }
+
+    if(toSave == "") {
+        localStorage.removeItem("cardExclusions");
+        return;
+    }
+
+    localStorage.setItem("cardExclusions", toSave);
+}
+
+window.addEventListener("load", ()=> {
+    loadExclusions();
+    generateNewDeck();
+});
+window.addEventListener("unload", saveExclusions);
+
 resetButton.addEventListener("click", generateNewDeck);
 
 docMain.addEventListener("click", drawFromDeck);
