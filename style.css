@@ -49,6 +49,10 @@ footer {
     margin-top: 0.35rem;
 }
 
+#clearExclusionsButtonInput {
+    margin-top: 0.2rem;
+}
+
 main p {
     width: fit-content;
     height: fit-content;

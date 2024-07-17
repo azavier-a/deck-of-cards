@@ -3,6 +3,7 @@ const useJokersRadio = document.getElementById("radioJokerTrue");
 const exclusionsHolder = document.getElementById("exclusionsList");
 const addExclusionText = document.getElementById("addExclusionTextInput");
 const addExclusionButton = document.getElementById("addExclusionButtonInput");
+const clearExclusionsButton = document.getElementById("clearExclusionsButtonInput");
 const cardTextDisplay = document.getElementById("cardText")
 const cardsLeftDisplay = document.getElementById("cardsLeft");
 const docMain = document.querySelector("main");
@@ -131,6 +132,12 @@ function drawFromDeck() {
     cardsLeftDisplay.innerHTML = deckOfCards.length;
 }
 
+function clearExclusions() {
+    EXCLUSIONS.splice(0, EXCLUSIONS.length);
+    exclusionsHolder.innerHTML = '';
+    generateNewDeck();
+}
+
 function loadExclusions() {
     const fetchedExclusions = localStorage.getItem("cardExclusions")??0;
     if(fetchedExclusions === 0) return;
@@ -173,3 +180,5 @@ addExclusionButton.addEventListener("click", () => {
     
     setTimeout(() => addExclusionButton.style = "", 500);
 });
+
+clearExclusionsButton.addEventListener("click", clearExclusions);
