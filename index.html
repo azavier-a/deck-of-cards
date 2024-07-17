@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Random Card Bingo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <p id="cardText">Click to Start</p>
+    </main>
+    <footer>
+        <p id="cardsLeft">52</p>
+        <div id="inputBox">
+            <label>Include Joker Cards: </label>
+            <input type="radio" name="useJokers" id="radioJokerTrue" value="true">
+            <label for="radioJokerTrue">true</label>&nbsp;
+            <input type="radio" name="useJokers" id="radioJokerFalse" value="false" checked>
+            <label for="radioJokerFalse">false</label><br>
+            <input type="button" id="deckResetButtonInput" value="Reset Deck"><br><br>
+            <input type="text" name="addExclusionText" id="addExclusionTextInput" placeholder="ace of spades">
+            <input type="button" id="addExclusionButtonInput" value="Exclude">
+        </div id="inputBox">
+        <div id="exclusionsContainer">
+            <strong>Excluded Cards:</strong>
+            <ul id="exclusionsList">
+                
+            </ul>
+        </div>
+        
+    </footer>
+    <script src="cardBingo.js"></script>
+</body>
+</html>
