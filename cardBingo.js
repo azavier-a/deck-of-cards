@@ -131,10 +131,11 @@ function drawFromDeck() {
     cardsLeftDisplay.innerHTML = deckOfCards.length;
 }
 
-window.onload = generateNewDeck;
-resetButton.onclick = generateNewDeck;
+window.addEventListener("load", generateNewDeck);
+resetButton.addEventListener("click", generateNewDeck);
 
-docMain.onclick = drawFromDeck;
+docMain.addEventListener("click", drawFromDeck);
+docMain.addEventListener("touchend", drawFromDeck);
 
 addExclusionButton.onclick = () => {
     if(addToExclusions(addExclusionText.value)) {
