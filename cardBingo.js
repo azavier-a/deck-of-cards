@@ -123,12 +123,12 @@ function drawFromDeck() {
 
     const randomIndex = Math.floor(Math.random()*deckOfCards.length);
 
-    const card = deckOfCards[randomIndex];
+    const card = deckOfCards.splice(randomIndex, 1)[0];
     cardTextDisplay.innerHTML = card;
 
-    Utter(card, 2100 + Math.random()*350);
+    Utter("Card "+(52 - deckOfCards.length), 1500);
+    Utter(card, 2500);
 
-    deckOfCards.splice(randomIndex, 1);
     cardsLeftDisplay.innerHTML = deckOfCards.length;
 }
 
