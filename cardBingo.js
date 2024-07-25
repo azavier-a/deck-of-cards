@@ -177,7 +177,14 @@ useOnlyExceptionsBox.addEventListener("click", generateNewDeck);
 docMain.addEventListener("click", drawFromDeck);
 
 addExclusionButton.addEventListener("click", () => {
-    if(addToExclusions(addExclusionText.value)) {
+    let success = true;
+
+    const exclusions = addExclusionText.value.split("_");
+    for(const e of exclusions) {
+        if(addToExclusions(e) == false) success = false;
+    }
+
+    if(success) {
         addExclusionButton.style = "background-color: rgb(50, 200, 50)";
         generateNewDeck();
 
