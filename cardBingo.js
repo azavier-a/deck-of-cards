@@ -1,8 +1,10 @@
 const resetButton = document.getElementById("deckResetButtonInput");
-const useJokersRadio = document.getElementById("radioJokerTrue");
+const useJokersRadioTrue = document.getElementById("radioJokerTrue");
+const useJokersRadioFalse = document.getElementById("radioJokerFalse");
 const exclusionsHolder = document.getElementById("exclusionsList");
 const addExclusionText = document.getElementById("addExclusionTextInput");
 const addExclusionButton = document.getElementById("addExclusionButtonInput");
+const useOnlyExceptionsBox = document.getElementById("useOnlyExclusionsCheckbox");
 const clearExclusionsButton = document.getElementById("clearExclusionsButtonInput");
 const cardTextDisplay = document.getElementById("cardText")
 const cardsLeftDisplay = document.getElementById("cardsLeft");
@@ -87,12 +89,12 @@ function generateNewDeck() {
     for(const suite of SUITES) for(const card of CARDS) {
         const str = card  +" of "+ suite;
 
-        if(EXCLUSIONS.includes(str.toLowerCase())) continue;
+        if(EXCLUSIONS.includes(str.toLowerCase()) ^ useOnlyExceptionsBox.checked) continue;
 
         deckOfCards.push(str);
     }
 
-    if(useJokersRadio.checked) {
+    if(useJokersRadioTrue.checked) {
         deckOfCards.push("Red Joker");
         deckOfCards.push("Black Joker");
     }
@@ -168,6 +170,9 @@ window.addEventListener("load", ()=> {
 window.addEventListener("unload", saveExclusions);
 
 resetButton.addEventListener("click", generateNewDeck);
+useJokersRadioTrue.addEventListener("click", generateNewDeck);
+useJokersRadioFalse.addEventListener("click", generateNewDeck);
+useOnlyExceptionsBox.addEventListener("click", generateNewDeck);
 
 docMain.addEventListener("click", drawFromDeck);
 
